@@ -2,6 +2,7 @@ import { OnDestroy } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Products } from 'src/app/models/products';
+import { CartService } from 'src/app/services/cart.service';
 import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
@@ -16,7 +17,8 @@ export class ProductComponent implements OnInit,OnDestroy {
 
 
   constructor(
-    private productServ : ProductsService
+    private productServ : ProductsService,
+    private cartServ : CartService,
   ) { }
 
   ngOnInit(): void {
@@ -25,6 +27,16 @@ export class ProductComponent implements OnInit,OnDestroy {
       console.log(this.productsa)
     });
     this.productServ.emitProducts()
+  }
+
+
+  addToCart(product : Products) : void {
+    this.cartServ.addProductToCart(product);
+    
+  }
+
+  deleteFromCart(product : Products) : void {
+    this.cartServ.deleteProduct(product)
   }
 
 
