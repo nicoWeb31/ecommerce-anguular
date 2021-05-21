@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -12,6 +14,22 @@ import { ShopComponent } from './shop/shop.component';
 import { ProductComponent } from './shop/product/product.component';
 import { ProductItemComponent } from './shop/product-item/product-item.component';
 import { ProductCartComponent } from './shop/product-cart/product-cart.component';
+import { CartComponent } from './cart/cart.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { RouterModule } from '@angular/router';
+
+const routes = [
+  { path: 'home', component: HomeComponent },
+  { path: 'shop', component: ShopComponent },
+  { path: 'cart', component: CartComponent },
+  { path: 'product-item/:id', component: ProductItemComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: '', component: ShopComponent },
+  { path: 'notfound', component: NotFoundComponent },
+  { path: '**', redirectTo: 'notfound', pathMatch: 'full' },
+];
 
 @NgModule({
   declarations: [
@@ -25,12 +43,13 @@ import { ProductCartComponent } from './shop/product-cart/product-cart.component
     ShopComponent,
     ProductComponent,
     ProductItemComponent,
-    ProductCartComponent
+    ProductCartComponent,
+    CartComponent,
+    NotFoundComponent,
+
   ],
-  imports: [
-    BrowserModule
-  ],
+  imports: [BrowserModule, RouterModule.forRoot(routes), HttpClientModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
