@@ -17,6 +17,8 @@ import { ProductCartComponent } from './shop/product-cart/product-cart.component
 import { CartComponent } from './cart/cart.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RouterModule } from '@angular/router';
+import { ModalAddToCartComponent } from './shop/modal-add-to-cart/modal-add-to-cart.component';
+import { ModalQuickViewComponent } from './shop/modal-quick-view/modal-quick-view.component';
 
 const routes = [
   { path: 'home', component: HomeComponent },
@@ -26,7 +28,6 @@ const routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: '', component: ShopComponent },
   { path: 'notfound', component: NotFoundComponent },
   { path: '**', redirectTo: 'notfound', pathMatch: 'full' },
 ];
@@ -46,6 +47,8 @@ const routes = [
     ProductCartComponent,
     CartComponent,
     NotFoundComponent,
+    ModalAddToCartComponent,
+    ModalQuickViewComponent,
 
   ],
   imports: [BrowserModule, RouterModule.forRoot(routes), HttpClientModule],

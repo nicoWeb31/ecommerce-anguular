@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Products } from '../models/products';
 import { Result } from '../models/result';
 
 @Injectable({
@@ -9,8 +10,8 @@ import { Result } from '../models/result';
 })
 export class ProductsService {
 
-  products = [];
-  productSubject = new Subject<any[]>();
+  products:Products[] = [];
+  productSubject = new Subject<Products[]>();
   url = `https://api-jstore.espero-soft.com/api/products?API_KEY=adsffsdfds6b-6727-46f4-8bee-2c6ce6293e41`;
 
   constructor(
